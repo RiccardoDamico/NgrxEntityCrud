@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {RootStoreState, SlideMenuStoreActions} from '../../../root-store/';
+import {RootStoreState, RouterStoreActions, SlideMenuStoreActions} from '../../../root-store/';
 import {MenuItem} from 'primeng/api';
 
 @Component({
@@ -59,8 +59,38 @@ export class SlideMenuComponent implements OnInit, OnDestroy {
       {
         label: 'Edit (demonstrative)',
         items: [
-          {label: 'Add User (demonstrative)', icon: 'pi pi-fw pi-user-plus'},
-          {label: 'Remove User (demonstrative)', icon: 'pi pi-fw pi-user-minus'}
+          {
+            label: 'Coin',
+            icon: 'pi pi-fw pi-external-link',
+            command: (event$) => {
+              // invoco il router per cambiare pagina
+              this.store$.dispatch(RouterStoreActions.RouterGo({path: ['coin']}));
+
+              // salvo nello store del menù l'elemento selezionato.
+              this.store$.dispatch(SlideMenuStoreActions.Select({
+                item: {
+                  data: {},
+                  breadcrumb: ['Home', 'Coin']
+                }
+              }));
+            }
+          },
+          {
+            label: 'Person',
+            icon: 'pi pi-fw pi-external-link',
+            command: (event$) => {
+              // invoco il router per cambiare pagina
+              this.store$.dispatch(RouterStoreActions.RouterGo({path: ['person']}));
+
+              // salvo nello store del menù l'elemento selezionato.
+              this.store$.dispatch(SlideMenuStoreActions.Select({
+                item: {
+                  data: {},
+                  breadcrumb: ['Home', 'Person']
+                }
+              }));
+            }
+          }
         ]
       }];
     // const items = [
