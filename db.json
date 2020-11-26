@@ -1,24 +1,7 @@
 {
   "coin": [
-    {
-      "id": 1,
-      "nome": "luca"
-    },
-    {
-      "id": 2,
-      "nome": "luca"
-    },
-    {
-      "id": 3,
-      "nome": "luca"
-    },
-    {
-      "id": 4,
-      "nome": "luca"
-    },
-    {
-      "id": 5,
-      "nome": "luca"
-    }
+    { "id": 1, "value": "10", "name": "marco", "description": "desc marco" },
+    { "id": 2, "value": "20", "name": "luca", "description": "desc luca" },
+    { "id": 3, "value": "30", "name": "andrea", "description": "desc andrea" }
   ]
 }
