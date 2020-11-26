@@ -3,5 +3,10 @@
     { "id": 1, "value": "10", "name": "marco", "description": "desc marco" },
     { "id": 2, "value": "20", "name": "luca", "description": "desc luca" },
     { "id": 3, "value": "30", "name": "andrea", "description": "desc andrea" }
+  ],
+  "person": [
+    { "id": 1, "name": "marco", "surname": "rossi", "phoneNumber": "123" },
+    { "id": 2, "name": "mario", "surname": "bianchi", "phoneNumber": "456" },
+    { "id": 3, "name": "giuseppe", "surname": "verdi", "phoneNumber": "789" }
   ]
 }

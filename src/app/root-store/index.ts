@@ -8,3 +8,5 @@ export * from './router-store';
 export * from './slide-menu-store';
 
 export * from './coin-store';
+
+export * from './person-store';
