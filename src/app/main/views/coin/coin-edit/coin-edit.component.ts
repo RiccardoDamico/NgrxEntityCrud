@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {closePopUpAction, PopUpBaseComponent} from '@root-store/router-store/pop-up-base.component';
 import {Coin} from '@models/vo/coin';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CoinStoreActions} from '@root-store/coin-store';
 
 
@@ -14,12 +14,25 @@ export class CoinEditComponent extends PopUpBaseComponent<Coin> {
 
   form: FormGroup;
   keys: string[];
+  id: FormControl;
+  name: FormControl;
+  value: FormControl;
 
   setItemPerform(value: Coin): void {
-    const group = this.fb.group({});
-    this.keys = Object.keys(value);
-    this.keys.forEach(key => group.addControl(key, this.fb.control({value: value[key], disabled: key === 'id'})));
-    this.form = group;
+    this.makeFrom();
+    this.form.reset(value);
+  }
+
+  makeFrom(): void {
+    this.id = this.fb.control({value: '', disabled: true});
+    this.name = this.fb.control('', Validators.required);
+    this.value = this.fb.control('', Validators.required);
+
+    this.form = this.fb.group({
+      id: this.id, // attributo
+      name: this.name, // attributo
+      value: this.value // attributo
+    });
   }
 
   acceptPerform(item: Coin): void {
