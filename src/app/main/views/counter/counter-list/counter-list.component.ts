@@ -4,6 +4,7 @@ import {CounterStoreActions, CounterStoreSelectors, RootStoreState} from '@root-
 import {Observable} from 'rxjs';
 import {Counter} from '@models/vo/counter';
 
+
 @Component({
   selector: 'app-counter-list',
   templateUrl: `counter-list.component.html`,
@@ -11,29 +12,52 @@ import {Counter} from '@models/vo/counter';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CounterListComponent implements OnInit {
-  constructor(private readonly store$: Store<RootStoreState.State>) {
-  }
 
-  count$: Observable<number>;
+
+  collection$: Observable<Counter[]>;
+
+  constructor(private store$: Store<RootStoreState.State>) {
+    console.log('CounterListComponent.constructor()');
+  }
 
   ngOnInit(): void {
-    console.log('CounterMainComponent.ngOnInit()');
-    this.count$ = this.store$.select(CounterStoreSelectors.selecQuantity);
+    console.log('CounterListComponent.ngOnInit()');
+
+   // this.collection$ = this.store$.select(CounterStoreSelectors.selectAll);
+
+ //   this.store$.dispatch(
+  //    CounterStoreActions.SearchRequest({queryParams: {}})
+  //  );
+
   }
 
-  increment(): void {
-    console.log('CounterMainComponent.increment()');
-    this.store$.dispatch(CounterStoreActions.Increment());
+  onEdit(item): void {
+    console.log('CounterListComponent.onEdit()');
+
+/*
+
+    this.store$.dispatch(RouterStoreActions.RouterGoPopUp({
+      path: ['counter', {outlets: {popUp: ['edit']}}]
+    }));
+
+*/
+
   }
 
-  decrement(): void {
-    console.log('CounterMainComponent.decrement()');
-    this.store$.dispatch(CounterStoreActions.Decrement());
+  onCopy(value): void {
+    console.log('CounterListComponent.onCopy()');
+/*
+
+    this.store$.dispatch(RouterStoreActions.RouterGoPopUp({
+      path: ['counter', {outlets: {popUp: ['edit']}}]
+    }));
+
+*/
+
   }
 
-  reset(): void {
-    console.log('CounterMainComponent.reset()');
-    this.store$.dispatch(CounterStoreActions.Reset());
+  onDelete(item): void {
+    // this.store$.dispatch(CounterStoreActions.DeleteRequest({item}));
   }
 
 }
