@@ -10,6 +10,9 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
         </div>
       </div>
       <div class="p-col text-align-right">
+        <app-increment>Increment</app-increment>
+        <app-decrement>Decrement</app-decrement>
+        <app-reset>Reset</app-reset>
         <em class="fas fa-2x fa-user fa-button p-1" style="color: #FFF;"></em>
       </div>
     </div>
@@ -29,7 +32,7 @@ export class HeaderComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
