@@ -13,6 +13,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
         <app-increment>Increment</app-increment>
         <app-decrement>Decrement</app-decrement>
         <app-reset>Reset</app-reset>
+        <app-logout-button></app-logout-button>
         <em class="fas fa-2x fa-user fa-button p-1" style="color: #FFF;"></em>
       </div>
     </div>
