@@ -1,4 +1,5 @@
 import {InjectionToken, NgModule} from '@angular/core';
+// @ts-ignore
 import {CommonModule} from '@angular/common';
 import {ActionReducer, StoreModule} from '@ngrx/store';
 import {Names} from './names';

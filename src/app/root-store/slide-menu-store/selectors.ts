@@ -12,15 +12,16 @@ const getBreadcrumb = (value: SlideMenuItem): string[] => value.breadcrumb;
 
 export const selectState: MemoizedSelector<object, State> = createFeatureSelector<State>(Names.NAME);
 
+export const selectItems: MemoizedSelector<object, MenuItem[]> = createSelector(
+  selectState,
+  getItems
+);
+
 export const selectItem: MemoizedSelector<object, SlideMenuItem> = createSelector(
   selectState,
   getItem
 );
 
-export const selectItems: MemoizedSelector<object, MenuItem[]> = createSelector(
-  selectState,
-  getItems
-);
 
 export const selectOpen: MemoizedSelector<object, boolean> = createSelector(
   selectState,

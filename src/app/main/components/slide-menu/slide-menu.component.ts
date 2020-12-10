@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {RootStoreState, RouterStoreActions, SlideMenuStoreActions, SlideMenuStoreSelectors} from '../../../root-store/';
+import {RootStoreState, SlideMenuStoreActions, SlideMenuStoreSelectors} from '../../../root-store/';
 import {MenuItem} from 'primeng/api';
 import {Observable} from 'rxjs';
-import {MonoTypeOperatorFunction} from 'rxjs/internal/types';
-import {map} from 'rxjs/operators';
+import {menuItemsDecorator} from '@root-store/slide-menu-store/operators';
 
 @Component({
   selector: 'app-slide-menu',
@@ -26,16 +25,13 @@ import {map} from 'rxjs/operators';
       font-size: x-large;
       padding: 18px;
     }
-
     .slide-header i {
       font-size: xx-large;
     }
-
     .p-menu {
       width: unset !important;
       border: unset !important;
     }
-
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
@@ -54,7 +50,7 @@ export class SlideMenuComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.items$ = this.store$.pipe(
       select(SlideMenuStoreSelectors.selectItems),
-      menuDecorator(this.store$)
+      menuItemsDecorator(this.store$)
     );
 
     this.store$.dispatch(SlideMenuStoreActions.Select({
@@ -65,9 +61,3 @@ export class SlideMenuComponent implements OnInit, OnDestroy {
     }));
   }
 }
-
-export const menuDecorator = <T>(store$): MonoTypeOperatorFunction<any> => {
-  return input$ => input$.pipe(
-    map((items: MenuItem[]) => items.map(value => ({...value, store$})))
-  );
-};

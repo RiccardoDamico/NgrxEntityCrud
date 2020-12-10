@@ -17,7 +17,6 @@ export const initialState: State = {
       label: 'Coin',
       icon: 'pi pi-fw pi-user-plus',
       command: (event$) => {
-        debugger
         // invoco il router per cambiare pagina
         event$.item.store$.dispatch(RouterStoreActions.RouterGo({path: ['coin']}));
         // salvo nello store del menù l'elemento selezionato.
